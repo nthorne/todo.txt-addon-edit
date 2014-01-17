@@ -6,10 +6,6 @@ A todo.txt command line add-on for editing the todo file.
 
     $ todo.sh edit
 
-or
-
-    $ todo.sh e
-
 # Licensing
 
 This add-on is released under the GNU General Public License v.3
