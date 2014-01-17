@@ -1,0 +1,51 @@
+#!/bin/bash
+
+#Copyright (C) 2013 Niklas Thorne.
+#
+#This file is part of edit.
+#
+#edit is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#(at your option) any later version.
+#
+#edit is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#
+#You should have received a copy of the GNU General Public License
+#along with edit.  If not, see <http://www.gnu.org/licenses/>.
+
+function usage()
+{
+  echo " edit add-on:"
+  echo "   edit"
+  echo "     Edit the todo file."
+  echo ""
+  exit
+}
+
+function error()
+{
+  echo "error: $@" >&2
+  exit 1
+}
+
+function parse_options()
+{
+  local action=$1
+  shift
+
+  [ "$action" = "usage" ] && usage
+}
+
+function edit_todo_file()
+{
+  local editor=${EDITOR-vi}
+
+  $editor $TODO_FILE
+}
+
+parse_options "$@"
+edit_todo_file
